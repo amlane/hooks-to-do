@@ -12,7 +12,6 @@ function ToDoList() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("clicked");
     setToDos([...toDos, { id: Date.now(), task: input }]);
     setInput("");
   };
