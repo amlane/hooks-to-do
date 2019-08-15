@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import AddToDo from "./AddToDo";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([
-    { id: 1, task: "dishes" },
-    { id: 2, task: "laundry" },
-    { id: 3, task: "exercise" }
+    { id: 1, task: "cry" },
+    { id: 2, task: "bake cookies" },
+    { id: 3, task: "figure out state mgmt for forms" }
   ]);
 
   const [input, setInput] = useState("");
@@ -15,7 +14,7 @@ function ToDoList() {
     setToDos([...toDos, { id: Date.now(), task: input }]);
     setInput("");
   };
-
+  console.log("App renders");
   return (
     <div>
       <ul>
@@ -23,7 +22,15 @@ function ToDoList() {
           return <li>{todo.task}</li>;
         })}
       </ul>
-      <AddToDo handleSubmit={handleSubmit} input={input} setInput={setInput} />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={input}
+          placeholder="What you needin to do fam?"
+          onChange={e => setInput(e.target.value)}
+        />
+        <button>+</button>
+      </form>
     </div>
   );
 }
