@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NewToDo from "./NewToDo";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([
@@ -7,13 +8,6 @@ function ToDoList() {
     { id: 3, task: "figure out state mgmt for forms" }
   ]);
 
-  const [input, setInput] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    setToDos([...toDos, { id: Date.now(), task: input }]);
-    setInput("");
-  };
   console.log("App renders");
   return (
     <div>
@@ -22,15 +16,7 @@ function ToDoList() {
           return <li>{todo.task}</li>;
         })}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          placeholder="What you needin to do fam?"
-          onChange={e => setInput(e.target.value)}
-        />
-        <button>+</button>
-      </form>
+      <NewToDo toDos={toDos} setToDos={setToDos} />
     </div>
   );
 }
