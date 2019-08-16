@@ -1,21 +1,14 @@
 import React, { useState } from "react";
-import AddToDo from "./AddToDo";
+import NewToDo from "./NewToDo";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([
-    { id: 1, task: "dishes" },
-    { id: 2, task: "laundry" },
-    { id: 3, task: "exercise" }
+    { id: 1, task: "cry" },
+    { id: 2, task: "bake cookies" },
+    { id: 3, task: "figure out state mgmt for forms" }
   ]);
 
-  const [input, setInput] = useState("");
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    setToDos([...toDos, { id: Date.now(), task: input }]);
-    setInput("");
-  };
-
+  console.log("App renders");
   return (
     <div>
       <ul>
@@ -23,7 +16,7 @@ function ToDoList() {
           return <li>{todo.task}</li>;
         })}
       </ul>
-      <AddToDo handleSubmit={handleSubmit} input={input} setInput={setInput} />
+      <NewToDo toDos={toDos} setToDos={setToDos} />
     </div>
   );
 }
